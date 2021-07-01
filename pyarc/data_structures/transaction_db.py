@@ -52,9 +52,9 @@ class TransactionDB:
         
         new_dataset = []
 
-        for row in dataset:
-            class_label = Item(header[-1], row[-1])
-            new_row = TransactionClass(row[:-1], header[:-1], class_label, drop_NaN=drop_NaN)
+        for header_row, row in zip(header, dataset):
+            class_label = Item(header_row[-1], row[-1])
+            new_row = TransactionClass(row[:-1], header_row[:-1], class_label, drop_NaN=drop_NaN)
             
             self.class_labels.append(class_label)
             
